@@ -66,7 +66,7 @@ async function scrapEachHouse(arr) {
     console.log(targetedData);
 
     fs.writeFile(
-      "./scraped-data.json",
+      "Greece/scraped-data.json",
       JSON.stringify(targetedData, null, 2),
       function(error) {
         if (error) {
