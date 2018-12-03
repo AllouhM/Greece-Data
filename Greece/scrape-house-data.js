@@ -63,10 +63,9 @@ async function scrapEachHouse(arr) {
       const houseObj = await scrapHouse(arr[i]);
       targetedData.push(houseObj);
     }
-    console.log(targetedData);
 
     fs.writeFile(
-      "Greece/scraped-data.json",
+      "./scraped-data.json",
       JSON.stringify(targetedData, null, 2),
       function(error) {
         if (error) {

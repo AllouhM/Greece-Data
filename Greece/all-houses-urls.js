@@ -7,17 +7,14 @@ const URL =
 function getHouseUrlPerPage(url) {
   return rp(url)
     .then(html => {
-      const UrlsPerPage = [];
+      const urlsPerPage = [];
       const $ = cheerio.load(html);
 
-      $(".media")
-        .children("a")
-        .each((i, ele) => {
-          if (i % 2 == 0) {
-            UrlsPerPage.push($(ele).attr("href"));
-          }
-        });
-      return UrlsPerPage;
+      $(".img_holder").each((i, ele) => {
+        urlsPerPage.push($(ele).attr("href"));
+      });
+
+      return urlsPerPage;
     })
     .catch(error => {
       console.error(error);
