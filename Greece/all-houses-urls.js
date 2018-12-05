@@ -9,7 +9,6 @@ function getHouseUrlPerPage(url) {
     .then(html => {
       const urlsPerPage = [];
       const $ = cheerio.load(html);
-
       $(".img_holder").each((i, ele) => {
         urlsPerPage.push($(ele).attr("href"));
       });
@@ -24,8 +23,9 @@ function getHouseUrlPerPage(url) {
 function mainPagesUrls() {
   const mainUrls = [URL];
   let offset = 10;
-
-  for (let i = 0; i < 9; i++) {
+  // let number 9 more clear
+  const numOfMainPages = 9;
+  for (let i = 0; i < numOfMainPages; i++) {
     mainUrls.push(URL + "/offset_" + offset);
     offset += 10;
   }

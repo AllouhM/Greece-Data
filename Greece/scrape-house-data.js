@@ -59,7 +59,7 @@ function scrapHouse(url) {
 async function scrapEachHouse(arr) {
   try {
     const targetedData = [];
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < 3; i++) {
       const houseObj = await scrapHouse(arr[i]);
       targetedData.push(houseObj);
     }
