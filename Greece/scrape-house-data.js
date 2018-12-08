@@ -30,7 +30,6 @@ function scrapHouse(url) {
       const houseObj = {};
       classNames.forEach((elem, i) => {
         houseObj[elem] = classValues[i];
-        // return houseObj;
       });
       const address = classDetails[1].trim();
       const indexOfM = houseObj.Area.trim().indexOf("m");
@@ -60,7 +59,7 @@ function scrapHouse(url) {
 async function scrapEachHouse(arr) {
   try {
     const targetedData = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < arr.length; i++) {
       const houseObj = await scrapHouse(arr[i]);
       targetedData.push(houseObj);
     }

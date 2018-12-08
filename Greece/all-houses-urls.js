@@ -24,7 +24,6 @@ function getHouseUrlPerPage(url) {
 function mainPagesUrls() {
   const mainUrls = [URL];
   let offset = 10;
-  // let number 9 more clear
   const numOfMainPages = 9;
   for (let i = 0; i < numOfMainPages; i++) {
     mainUrls.push(URL + "/offset_" + offset);
