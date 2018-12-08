@@ -79,18 +79,6 @@ async function getDataFromApify() {
       if (err) throw new Error("Error in inserting data to database") + err;
       console.log("Number of records inserted: " + result.affectedRows);
     });
-    // });
-    // console.log(processedData);
-
-    // fs.writeFile(
-    //   "./normalized-data.json",
-    //   JSON.stringify(processedData, null, 2),
-    //   function(error) {
-    //     if (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    // );
   } catch (error) {
     console.log(error);
   }
