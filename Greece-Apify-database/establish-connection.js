@@ -1,6 +1,5 @@
 "use strict";
 const mysql = require("mysql");
-const array = require("./normalized-data");
 
 var db = mysql.createConnection({
   host: "localhost",
