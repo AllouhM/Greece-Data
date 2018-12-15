@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Add from "./components/form";
 import List from "./components/list";
+import Home from "./components/home";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Learn React</h1>
-        </header>
-
-        <List />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route path="/" component={Home} exact />
+          <Route path="/show" component={List} />
+          <Route path="/contribute" component={Add} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
