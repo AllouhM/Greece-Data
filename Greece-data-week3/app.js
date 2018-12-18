@@ -5,8 +5,9 @@ const mysql = require("mysql");
 const { validateEntries, normalizeRow } = require("./validate-normalize-data");
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -17,27 +18,23 @@ const db = mysql.createConnection({
 
 app.post("/upload", (req, res) => {
   try {
-
     const data = validateEntries(req.body.houses);
-
     res.json({
-      // processed: data.length,
-      // success: validData.length,
-      failed: data.filter(acceptedData => acceptedData.err !== null)
+      processed: data.length,
     })
       .end();
 
     const normalizedData = data.map(normalizeRow);
-    console.log(data.length)
+
     if (normalizedData.length) {
       const sql =
-        " REPLACE INTO houses (link, sold, location_country, location_city, location_address, location_coordinates_lat, location_coordinates_lng, size_grossm2, size_rooms, price_value, price_currency, description, title, images) values ?";
+        " REPLACE INTO houses (link, market_date, sold, location_country, location_city, location_address, location_coordinates_lat, location_coordinates_lng, size_grossm2, size_rooms, price_value, price_currency, description, title, images) values ?";
       db.query(
         sql,
         [
           normalizedData.map(raw => [
             raw["link"],
-            // raw["market_date"],
+            raw["market_date"],
             raw["sold"],
             raw["location"].country,
             raw["location"].city,
@@ -76,12 +73,9 @@ app.get("/list", (req, res) => {
       throw error;
     }
     res.json(result);
-    //   console.log("reult is Ok", result);
   });
 });
-app.use("*", (req, res) => {
-  res.json({ message: "hi" });
-});
+
 
 const port = process.env.PORT || 3120;
 db.connect(error => {

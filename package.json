@@ -10,12 +10,11 @@
   "author": "Mahmoud Allouh",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "cors": "^2.8.5",
-    "dateformat": "^3.0.3",
     "express": "^4.16.4",
+    "moment": "^2.23.0",
     "mysql": "^2.16.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",

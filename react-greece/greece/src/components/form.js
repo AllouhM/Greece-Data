@@ -20,17 +20,16 @@ class Add extends Component {
   addHouses = event => {
     event.preventDefault();
 
-    const ho = JSON.parse(this.state.houses)
+    const parseUserInput = JSON.parse(this.state.houses)
     fetch("http://localhost:3120/upload", {
       method: "POST",
-      body: JSON.stringify({ houses: ho }),
+      body: JSON.stringify({ houses: parseUserInput }),
       headers: {
         "Content-Type": "application/json"
       }
     })
       .then(res => this.setState({ postResponse: res }))
       .catch(err => console.log(err));
-    console.log(this.state.houses);
     this.setState({ houses: [] });
 
 
@@ -42,7 +41,6 @@ class Add extends Component {
 
   readJsonApi = async (event) => {
     event.preventDefault();
-    console.log(this.state.api)
     await fetch(this.state.api)
       .then(res => res.json()).then(data => {
         fetch("http://localhost:3120/upload", {
