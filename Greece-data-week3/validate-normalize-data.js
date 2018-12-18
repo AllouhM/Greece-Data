@@ -1,3 +1,4 @@
+("use strict");
 const moment = require('moment');
 moment().format();
 const validator = require("validator");

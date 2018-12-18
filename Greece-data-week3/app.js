@@ -1,3 +1,4 @@
+("use strict");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -82,7 +83,7 @@ db.connect(error => {
   if (error) {
     throw error;
   }
-  app.listen(port, () => {
+  app.listen(port, (err) => {
     console.log(`db is up, app is running at http://localhost:${port}`);
   });
 });
